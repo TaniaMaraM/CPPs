@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Megaphone.cpp                                      :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:56:24 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/21 16:24:04 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/27 11:19:22 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cctype>
 
+/**
+ * @brief Main function that converts all arguments to uppercase
+ * 
+ * If no arguments are provided, prints "* LOUD AND UNBEARABLE FEEDBACK NOISE *".
+ * Otherwise, converts each character of each argument to uppercase and prints
+ * them all concatenated.
+ * 
+ * @param argc Number of command line arguments
+ * @param argv Array of command line argument strings
+ * @return int Exit status (0 for success)
+ */
 int main(int argc, char **argv)
 {
     if (argc == 1)

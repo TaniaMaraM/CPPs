@@ -11,42 +11,40 @@
 # **************************************************************************** #
 
 NAME = megaphone
-
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
-SRC = ex00/megaphone.cpp
-OBJ = $(SRC:.cpp=.o)
+SRC = src/megaphone.cpp
+OBJ = $(SRC:src/%.cpp=obj/%.o)
 
 # COLORS
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 RED = \033[0;31m
-CYAN = \033[0;36m
+GRAY = \033[0;90m
 RESET = \033[0m
 
 all: $(NAME)
-	@echo "$(CYAN)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(RESET)"
-	@echo "$(CYAN)  ex00: Usage: ./megaphone <text>                                 $(RESET)"
-	@echo "$(CYAN)━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$(RESET)"
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)🚀 Linking $(NAME)...$(RESET)"
-	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)✅ $(NAME) ready!$(RESET)"
+	@echo "$(GRAY)Usage: $(RESET)./megaphone <text>"
 
-%.o: %.cpp
-	@echo "$(YELLOW)📦 Compiling $<...$(RESET)"
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+obj/%.o: src/%.cpp
+	@mkdir -p $(dir $@)
+	@echo "$(GRAY)Compiling $<...$(RESET)"
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJ)
+	@$(RM) -r obj
 	@echo "$(RED)🧹 Cleaned object files.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(RED)🗑️  Full clean done.$(RESET)"
+	@echo "$(RED)🗑️ Fully cleaned everything.$(RESET)"
 
 re: fclean all
 
