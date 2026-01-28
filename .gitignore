@@ -42,4 +42,4 @@
 *.doc
 *.cursor
 *.vsc
-*..DS_Store
+*.DS_Store
