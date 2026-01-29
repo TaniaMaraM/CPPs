@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:30:13 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 16:15:26 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:23:13 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //cria heap persiste
 Zombie* newZombie(std::string name) {
-    return new Zombie(name); //new = malloc + constructor
+	return new Zombie(name); //new = malloc + constructor
 }
 
 /*
@@ -24,8 +24,8 @@ Chama constructor Zombie(name)
 Retorna ponteiro
 em C seria:
 Zombie* newZombie(char *name) {
-    Zombie *z = malloc(sizeof(Zombie));
-    init_zombie(z, name);  // manual!
-    return z;
+	Zombie *z = malloc(sizeof(Zombie));
+	init_zombie(z, name);  // manual!
+	return z;
 }
 */

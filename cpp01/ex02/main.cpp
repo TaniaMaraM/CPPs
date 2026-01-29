@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:23:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 17:51:23 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:24:04 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 #include <iostream>
 
 int main(){
-    std::string str = "HI THIS IS BRAIN";
-    
-    std::string* stringPTR = &str; //pointer guarda o end
-    std::string& stringREF = str; //reference eh alias de str
-    //print addresses
-    std::cout << "Address of str:    " << &str << std::endl;
-    std::cout << "Address in PTR:    " << stringPTR << std::endl;
-    std::cout << "Address of REF:    " << &stringREF << std::endl;
+	std::string str = "HI THIS IS BRAIN";
 
-    std::cout << std::endl;
+	std::string* stringPTR = &str; //pointer guarda o end
+	std::string& stringREF = str; //reference eh alias de str
+	//print addresses
+	std::cout << "Address of str:    " << &str << std::endl;
+	std::cout << "Address in PTR:    " << stringPTR << std::endl;
+	std::cout << "Address of REF:    " << &stringREF << std::endl;
 
-    //print values
-    std::cout << "Value of str:     " << str << std::endl;
-    std::cout << "Value via PTR:    " << *stringPTR << std::endl;
-    std::cout << "Value via REF:    " << stringREF << std::endl;
-    
-    return 0;
-    
+	std::cout << std::endl;
+
+	//print values
+	std::cout << "Value of str:     " << str << std::endl;
+	std::cout << "Value via PTR:    " << *stringPTR << std::endl;
+	std::cout << "Value via REF:    " << stringREF << std::endl;
+
+	return 0;
+
 }
 
 
@@ -45,13 +45,13 @@ Sintaxe	ptr->method()	ref.method()
 int x = 42;
 
 POINTER:   "ptr guarda o ENDEREÇO da casa onde mora o 42"
-           → tens um papel com a morada
+		   → tens um papel com a morada
 
 REFERENCE: "ref É OUTRO NOME para x"
-           → é como alcunha: "António" = "Tó" (mesma pessoa!)
+		   → é como alcunha: "António" = "Tó" (mesma pessoa!)
 
 
-    🧠 O que é uma reference?
+	🧠 O que é uma reference?
 
 Uma reference é um apelido (alias) para uma variável que já existe.
 

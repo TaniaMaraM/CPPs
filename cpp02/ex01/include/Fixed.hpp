@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 21:03:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 14:32:50 by tmarcos          ###   ########.fr       */
+/*   Created: 2026/01/29 15:07:38 by tmarcos           #+#    #+#             */
+/*   Updated: 2026/01/29 15:49:26 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <string>
+#include <cmath>
 
 class Fixed {
 private:
@@ -22,15 +22,22 @@ private:
 	static const int	fractionalBits = 8;
 
 public:
-	// Orthodox Canonical Form
-	Fixed( void );							// Default constructor
-	Fixed( const Fixed& other );			// Copy constructor
-	Fixed& operator=( const Fixed& other );	// Copy assignment operator
-	~Fixed();							// Destructor
-
-	// Member functions
+	// Constructors & Destructor
+	Fixed( void );
+	Fixed( const int n );
+	Fixed( const float f );
+	Fixed( const Fixed& other );
+	Fixed& operator=( const Fixed& other );
+	~Fixed( void );
+	// Conversions
+	float	toFloat( void ) const;
+	int		toInt( void ) const;
+	// Getters/Setters
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 };
+
+// Operator overload (fora da classe!) <<  STREAM INSERTION OPERATOR
+std::ostream& operator<<( std::ostream& out, const Fixed& fixed );
 
 #endif
