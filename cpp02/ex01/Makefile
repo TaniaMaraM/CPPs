@@ -6,11 +6,11 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/28 21:04:06 by tmarcos           #+#    #+#              #
-#    Updated: 2026/01/29 14:51:11 by tmarcos          ###   ########.fr        #
+#    Updated: 2026/01/29 16:48:35 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = fixedpoint
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:29:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 16:13:44 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:23:23 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ Zombie::Zombie(std::string name) : name(name) {
 }
 //destructor debug
 Zombie::~Zombie(){
-    std::cout << name << " destroyed" << std::endl;
+	std::cout << name << " destroyed" << std::endl;
 }
 //announce
 void Zombie::announce(void){
-    std::cout << name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << name << ":  BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 /*

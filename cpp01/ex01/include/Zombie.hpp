@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:14:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 16:58:07 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:22:48 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 #include <iostream>
 
 class Zombie{
-    private:
-        std::string name;
-    
-    public:
-        Zombie(); //construtor
-        Zombie(std::string name); // parametrized constructor? pq?
-        ~Zombie();
-        
-        void setName(std::string name); //setter
-        void announce(void);
+	private:
+		std::string name;
+
+	public:
+		Zombie(); //construtor
+		Zombie(std::string name); // parametrized constructor? pq?
+		~Zombie();
+
+		void setName(std::string name); //setter
+		void announce(void);
 };
 
 Zombie* zombieHorde(int N, std::string name);

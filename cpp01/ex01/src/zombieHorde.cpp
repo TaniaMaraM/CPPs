@@ -6,20 +6,20 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:20:32 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 17:21:08 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:23:02 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 Zombie* zombieHorde(int N, std::string name) {
-    //aloca array de N zombies (chama default destructor N vezes)
-    Zombie* horde = new Zombie[N];  // ← heap allocation!
-    //dar nome a cada zombie
-    for(int i = 0; i < N; i++){
-        horde[i].setName(name);
-    }
-    return horde; //retorna um ponteiro pro primeiro zombie horde[0]
+	//aloca array de N zombies (chama default destructor N vezes)
+	Zombie* horde = new Zombie[N];  // ← heap allocation!
+	//dar nome a cada zombie
+	for(int i = 0; i < N; i++){
+		horde[i].setName(name);
+	}
+	return horde; //retorna um ponteiro pro primeiro zombie horde[0]
 }
 
 /*
