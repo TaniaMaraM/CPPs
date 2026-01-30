@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:00:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 14:06:10 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/30 08:41:19 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,25 @@ PhoneBook::PhoneBook() : totalContacts(0), nextIndex(0) {
 PhoneBook::~PhoneBook() {
 }
 
-// Lê um campo com validação: não aceita vazio, detecta EOF (Ctrl+D)
-// Retorna "" se EOF (para cancelar operação), senão retorna input válido
+// Lê um campo com validação: não aceita vazio/whitespace, detecta EOF
 std::string PhoneBook::readField(std::string fieldName) {
 	std::string input;
 
-	while (true) {  // Loop até input válido ou EOF
+	while (true) {
 		std::cout << fieldName << ": ";
-		std::getline(std::cin, input);  // Lê linha inteira (permite espaços)
+		std::getline(std::cin, input);
 
-		if (std::cin.eof()) {  // User premiu Ctrl+D
+		if (std::cin.eof()) {
 			std::cout << std::endl << "Input cancelled." << std::endl;
-			return "";  // String vazia indica erro/cancelamento
+			return "";
 		}
 
-		if (input.empty()) {  // Subject: campos não podem ser vazios
-			std::cout << "Error: Field cannot be empty!" << std::endl;
-			continue;  // Pede de novo
+		if (input.empty() || input.find_first_of(" \t") != std::string::npos) {
+			std::cout << "Error: Field cannot be empty" << std::endl;
+			continue;
 		}
 
-		return input;  // Input válido
+		return input;
 	}
 }
 
@@ -117,9 +116,7 @@ void PhoneBook::searchContact() const {
 		std::cout << "Error: PhoneBook is empty!" << std::endl;
 		return;
 	}
-
 	displayTable();
-
 	std::cout << "Enter index: ";
 	int index;
 	std::cin >> index;  // Lê número directamente
@@ -131,7 +128,6 @@ void PhoneBook::searchContact() const {
 		std::cout << "Error: Invalid input!" << std::endl;
 		return;
 	}
-
 	// cin >> deixa \n no buffer; ignore remove para não afetar próximo getline
 	std::cin.ignore(10000, '\n');
 
@@ -140,7 +136,6 @@ void PhoneBook::searchContact() const {
 		std::cout << "Error: Index out of range!" << std::endl;
 		return;
 	}
-
 	std::cout << std::endl;
 	contacts[index].displayFull();  // Contact mostra-se a si próprio
 }
