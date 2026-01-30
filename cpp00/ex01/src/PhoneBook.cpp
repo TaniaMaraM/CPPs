@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:00:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 08:41:19 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/30 08:57:37 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ std::string PhoneBook::readField(std::string fieldName) {
 			return "";
 		}
 
-		if (input.empty() || input.find_first_of(" \t") != std::string::npos) {
-			std::cout << "Error: Field cannot be empty" << std::endl;
+		if (input.empty() || input.find_first_not_of(" \t") == std::string::npos) {
+			std::cout << "Error: Field cannot be empty!" << std::endl;
 			continue;
 		}
+		// if (input.empty()) 
+		// {
+		// 	std::cout << "Error: Field cannot be empty" << std::endl;
+		// 	continue;
+		// }
 
 		return input;
 	}
