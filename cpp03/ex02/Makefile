@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/29 17:15:20 by tmarcos           #+#    #+#              #
-#    Updated: 2026/01/30 16:22:38 by tmarcos          ###   ########.fr        #
+#    Created: 2026/01/30 18:54:36 by tmarcos           #+#    #+#              #
+#    Updated: 2026/01/30 18:55:25 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap
+NAME = FragTrap
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include
@@ -20,7 +20,9 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-	  ClapTrap.cpp
+	  ClapTrap.cpp \
+	  ScavTrap.cpp \
+	  FragTrap.cpp \
 
 OBJ = $(SRC:%.cpp=obj/%.o)
 

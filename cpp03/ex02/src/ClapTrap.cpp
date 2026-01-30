@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 17:59:16 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/01/30 18:33:04 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 {
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = other;
+	std::cout << "ClapTrap " << this->name << " has been created as a copy!" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
