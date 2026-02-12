@@ -8,18 +8,12 @@ std::string replaceAll(const std::string& str, const std::string& s1, const std:
     size_t pos = 0;          // posição atual na string original
     size_t found;            // posição onde encontramos s1
 
-    // Procura s1 na string, começando em 'pos'
-    // find() retorna npos se não encontrar
     while ((found = str.find(s1, pos)) != std::string::npos) {
-        // Copia TUDO desde 'pos' até 'found' (antes de s1)
-        result.append(str, pos, found - pos);
-        // Adiciona s2 (substituição)
+        result.append(str, pos, found - pos); //str coppying from. Pos position na str. found is where 
         result.append(s2);
-        // Avança posição para depois de s1
-        pos = found + s1.length();
+        pos = found + s1.length(); //sum to go to the next search 
     }
-    // Copia o RESTO da string (depois da última substituição)
-    result.append(str, pos, str.length() - pos);
+    result.append(str, pos, str.length() - pos); //copy whatever is left in the original string.
     return result;
 }
 
@@ -66,7 +60,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // 7. Substituir e escrever resultado
+    //  I call replaceAll and write the result directly to outFile
     outFile << replaceAll(content, s1, s2);
     outFile.close();
 

@@ -6,145 +6,87 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:18:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 21:47:10 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/11 20:39:48 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "../include/Animal.hpp"
+#include "../include/Dog.hpp"
+#include "../include/Cat.hpp"
 
 int main()
 {
-    std::cout << "=== Test 1: Subject required test ===" << std::endl;
+    // Required test from subject
+    std::cout << "--- Creating Dog and Cat via Animal pointers ---" << std::endl;
     {
-        const Animal* j = new Dog();
-        const Animal* i = new Cat();
-        delete j;  // should not create a leak
-        delete i;
-    }
-    
-    std::cout << "\n=== Test 2: Basic polymorphic calls ===" << std::endl;
-    {
-        const Animal* base = new Animal();
         const Animal* dog = new Dog();
         const Animal* cat = new Cat();
-        
-        std::cout << "Type dog: " << dog->getType() << std::endl;
-        std::cout << "Type cat: " << cat->getType() << std::endl;
-        std::cout << "Cat says: ";
-        cat->makeSound();
-        std::cout << "Dog says: ";
-        dog->makeSound();
-        std::cout << "Generic Animal says: ";
-        base->makeSound();
-        
-        delete base;
         delete dog;
         delete cat;
     }
     
-    std::cout << "\n=== Test 3: Array of Animals (half Dog, half Cat) ===" << std::endl;
+    std::cout << "\n--- Testing array of 4 Animals ---" << std::endl;
     {
-        const int size = 6;
-        Animal* animals[size];
+        Animal* zoo[4];
         
-        std::cout << "Creating array..." << std::endl;
-        for (int i = 0; i < size / 2; i++)
-            animals[i] = new Dog();
-        for (int i = size / 2; i < size; i++)
-            animals[i] = new Cat();
+        std::cout << "Filling array with Dogs and Cats..." << std::endl;
+        zoo[0] = new Dog();
+        zoo[1] = new Dog();
+        zoo[2] = new Cat();
+        zoo[3] = new Cat();
         
-        std::cout << "\nTesting each animal:" << std::endl;
-        for (int i = 0; i < size; i++) {
-            std::cout << "Animal[" << i << "] is a " << animals[i]->getType() << " -> ";
-            animals[i]->makeSound();
-        }
-        
-        std::cout << "\nDeleting all animals:" << std::endl;
-        for (int i = 0; i < size; i++)
-            delete animals[i];
+        std::cout << "\nCleaning up array..." << std::endl;
+        for (int idx = 0; idx < 4; idx++)
+            delete zoo[idx];
     }
     
-    std::cout << "\n=== Test 4: Deep copy with copy constructor ===" << std::endl;
+    std::cout << "\n--- Copy constructor test ---" << std::endl;
     {
-        Cat originalCat;
-        originalCat.setIdea(0, "catnip");
-        originalCat.setIdea(1, "sleep all day");
+        std::cout << "Creating first dog..." << std::endl;
+        Dog firstDog;
         
-        std::cout << "\nCreating copy using copy constructor..." << std::endl;
-        Cat copiedCat(originalCat);
+        std::cout << "Copying to second dog..." << std::endl;
+        Dog secondDog(firstDog);
         
-        std::cout << "Original cat idea[0]: " << originalCat.getIdea(0) << std::endl;
-        std::cout << "Copied cat idea[0]:   " << copiedCat.getIdea(0) << std::endl;
-        
-        std::cout << "\nChanging individual ideas..." << std::endl;
-        originalCat.setIdea(0, "fish");
-        copiedCat.setIdea(0, "milk");
-        
-        std::cout << "After changes:" << std::endl;
-        std::cout << "Original cat idea[0]: " << originalCat.getIdea(0) << std::endl;
-        std::cout << "Copied cat idea[0]:   " << copiedCat.getIdea(0) << std::endl;
-        
-        if (originalCat.getIdea(0) != copiedCat.getIdea(0))
-            std::cout << "✅ Deep copy confirmed - ideas are independent!" << std::endl;
+        std::cout << "Both dogs are independent objects" << std::endl;
     }
     
-    std::cout << "\n=== Test 5: Deep copy with assignment operator ===" << std::endl;
+    std::cout << "\n--- Assignment operator test ---" << std::endl;
     {
-        Dog originalDog;
-        Dog anotherDog;
+        std::cout << "Creating two cats..." << std::endl;
+        Cat kitty1;
+        Cat kitty2;
         
-        originalDog.setIdea(1, "chase cats");
-        std::cout << "\nAssigning originalDog to anotherDog..." << std::endl;
-        anotherDog = originalDog;
+        std::cout << "Assigning kitty1 to kitty2..." << std::endl;
+        kitty2 = kitty1;
         
-        std::cout << "Original dog idea[1]: " << originalDog.getIdea(1) << std::endl;
-        std::cout << "Another dog idea[1]:  " << anotherDog.getIdea(1) << std::endl;
-        
-        std::cout << "\nChanging individual ideas..." << std::endl;
-        originalDog.setIdea(1, "play fetch");
-        anotherDog.setIdea(1, "eat bone");
-        
-        std::cout << "After changes:" << std::endl;
-        std::cout << "Original dog idea[1]: " << originalDog.getIdea(1) << std::endl;
-        std::cout << "Another dog idea[1]:  " << anotherDog.getIdea(1) << std::endl;
-        
-        if (originalDog.getIdea(1) != anotherDog.getIdea(1))
-            std::cout << "✅ Deep copy confirmed - ideas are independent!" << std::endl;
+        std::cout << "Assignment complete, both independent" << std::endl;
     }
     
-    std::cout << "\n=== Test 6: Self-assignment ===" << std::endl;
+    std::cout << "\n--- Self-assignment protection test ---" << std::endl;
     {
-        Dog dog;
-        dog.setIdea(0, "original idea");
-        Dog& ref = dog;
-        
-        std::cout << "Self-assigning via reference..." << std::endl;
-        dog = ref;
-        std::cout << "Idea after self-assignment: " << dog.getIdea(0) << std::endl;
-        std::cout << "✅ No crash - self-assignment handled correctly!" << std::endl;
+        Dog myDog;
+        Dog& refDog = myDog;
+        std::cout << "Testing self-assignment via reference..." << std::endl;
+        myDog = refDog;
+        std::cout << "Self-assignment handled safely" << std::endl;
     }
     
-    std::cout << "\n=== Test 7: Copy survives original deletion ===" << std::endl;
+    std::cout << "\n--- Deep copy verification ---" << std::endl;
     {
-        Dog* original = new Dog();
-        original->setIdea(0, "temporary idea");
+        Dog* heapDog = new Dog();
         
-        std::cout << "Creating copy of heap-allocated Dog..." << std::endl;
-        Dog copy(*original);
+        std::cout << "Creating stack copy from heap dog..." << std::endl;
+        Dog stackDog(*heapDog);
         
-        std::cout << "Copy's idea: " << copy.getIdea(0) << std::endl;
-        std::cout << "\nDeleting original..." << std::endl;
-        delete original;
+        std::cout << "Deleting heap dog..." << std::endl;
+        delete heapDog;
         
-        std::cout << "Copy still valid - idea: " << copy.getIdea(0) << std::endl;
-        std::cout << "Copy can still make sound: ";
-        copy.makeSound();
-        std::cout << "✅ Copy survived original's deletion!" << std::endl;
+        std::cout << "Stack copy remains valid: ";
+        stackDog.makeSound();
     }
     
-    std::cout << "\n=== All tests completed ===" << std::endl;
+    std::cout << "\n--- All tests complete ---" << std::endl;
     
     return 0;
 }

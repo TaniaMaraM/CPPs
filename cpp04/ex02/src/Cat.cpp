@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:45:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:31:17 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/11 20:30:31 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,4 @@ Cat::~Cat() {
 void Cat::makeSound() const {
     std::cout << "Meow! Meow!" << std::endl;
 }
+
