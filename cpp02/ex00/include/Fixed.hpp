@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 21:03:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 14:32:50 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/11 20:57:49 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ public:
 	~Fixed();							// Destructor
 
 	// Member functions
-	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
+	int		getRawBits( void ) const;
 };
 
 #endif

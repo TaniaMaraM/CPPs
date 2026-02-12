@@ -6,11 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:56:20 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:40:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/04 20:50:30 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Animal.hpp"
+#include "Animal.hpp"
 
 //default constructor
 Animal::Animal() : type("Animal") {
@@ -33,9 +33,7 @@ Animal::~Animal(){
     std::cout << "Animal destructor called" << std::endl;
 }
 
-void Animal::makeSound() const {
-    std::cout << "* Generic animal sound *" << std::endl;
-}
+// makeSound() is pure virtual - no implementation needed!
 
 std::string Animal::getType() const {
     return this->type;
