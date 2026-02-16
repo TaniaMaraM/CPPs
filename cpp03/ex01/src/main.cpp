@@ -6,87 +6,88 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:22:42 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:32:53 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/16 22:11:17 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
 int main()
 {
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     CREATING ROBOTS" << std::endl;
-	std::cout << "========================================" << std::endl;
-	ClapTrap clap("R2D2");
-	ScavTrap scav("T-800");
+	// TEST 1: Constructor chaining - ClapTrap first, then ScavTrap
+	// Destructor order is reverse - ScavTrap first, then ClapTrap
+	std::cout << "     \nTEST 1: CONSTRUCTOR/DESTRUCTOR CHAINING" << std::endl;
+	{
+		ScavTrap isolated("NEXUS");
+		std::cout << "--- ScavTrap alive in this scope ---" << std::endl;
+	}
+	std::cout << "--- Scope ended, check order above ---\n" << std::endl;
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 1: COMPARING ATTACKS" << std::endl;
-	std::cout << "========================================" << std::endl;
-	clap.attack("Enemy");
-	scav.attack("Enemy");
+	// Creating robots for remaining tests
+	std::cout << "     \nCREATING ROBOTS" << std::endl;
+	ClapTrap clappy("CLAPPY");
+	ScavTrap rocky("ROCKY");
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 2: TAKING DAMAGE" << std::endl;
-	std::cout << "========================================" << std::endl;
-	clap.takeDamage(5);
-	scav.takeDamage(30);
+	// TEST 2: Different attack messages - ScavTrap overrides ClapTrap::attack()
+	std::cout << "     \nTEST 2: ATTACK MESSAGES (MUST BE DIFFERENT)" << std::endl;
+	std::cout << "ClapTrap attack (0 damage):" << std::endl;
+	clappy.attack("Enemy");
+	std::cout << "\nScavTrap attack (20 damage, different message):" << std::endl;
+	rocky.attack("Enemy");
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 3: REPAIRING" << std::endl;
-	std::cout << "========================================" << std::endl;
-	clap.beRepaired(3);
-	scav.beRepaired(20);
+	// TEST 3: Inherited functions - takeDamage and beRepaired from ClapTrap
+	std::cout << "     \nTEST 3: INHERITED FUNCTIONS" << std::endl;
+	std::cout << "ScavTrap uses ClapTrap's takeDamage() and beRepaired():" << std::endl;
+	rocky.takeDamage(40);   // 100 - 40 = 60 HP
+	rocky.beRepaired(20);   // 60 + 20 = 80 HP, 49 energy left
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 4: COPY CONSTRUCTORS" << std::endl;
-	std::cout << "========================================" << std::endl;
-	std::cout << "Creating copies..." << std::endl;
-	ClapTrap clapCopy(clap);
-	ScavTrap scavCopy(scav);
+	// TEST 4: ScavTrap unique ability - guardGate()
+	std::cout << "     \nTEST 4: SPECIAL ABILITY - GUARDGATE" << std::endl;
+	rocky.guardGate();
 
-	std::cout << "\nCopies testing their functions..." << std::endl;
-	clapCopy.attack("Copy Target");
-	scavCopy.attack("Copy Target");
-	scavCopy.guardGate();
+	// TEST 5: ScavTrap stats - 100 HP, 50 Energy, 20 Damage
+	std::cout << "     \nTEST 5: SCAVTRAP DURABILITY (100 HP)" << std::endl;
+	std::cout << "ClapTrap dies from 15 damage (only has 10 HP):" << std::endl;
+	clappy.takeDamage(15);
+	clappy.attack("Target");    // MUST fail: dead
+	clappy.beRepaired(5);       // MUST fail: dead
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 5: ASSIGNMENT OPERATOR" << std::endl;
-	std::cout << "========================================" << std::endl;
-	ClapTrap clap2("C3PO");
-	std::cout << "Before assignment:" << std::endl;
-	clap2.attack("Test");
-	std::cout << "\nAssigning R2D2 to C3PO..." << std::endl;
-	clap2 = clap;
-	std::cout << "After assignment:" << std::endl;
-	clap2.attack("Test");
+	std::cout << "\nScavTrap survives 95 damage (has 100 HP):" << std::endl;
+	ScavTrap tank("TANK");
+	tank.takeDamage(95);        // 100 - 95 = 5 HP
+	tank.attack("Survivor");    // Should work: still alive
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 6: SCAVTRAP SPECIAL ABILITY" << std::endl;
-	std::cout << "========================================" << std::endl;
-	scav.guardGate();
-
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 7: ENERGY STRESS TEST" << std::endl;
-	std::cout << "========================================" << std::endl;
-	std::cout << "ScavTrap attacks multiple times..." << std::endl;
+	// TEST 6: Energy limit - ScavTrap has 50 energy (vs ClapTrap's 10)
+	std::cout << "     \nTEST 6: ENERGY EXHAUSTION" << std::endl;
+	std::cout << "ROCKY attacks 5 times (has 50 energy, plenty left):" << std::endl;
 	for (int i = 0; i < 5; i++)
-		scav.attack("Training Dummy");
+		rocky.attack("Drain");
+	std::cout << "\nROCKY still has energy - can repair:" << std::endl;
+	rocky.beRepaired(5);
+	std::cout << "(ScavTrap has 50 energy vs ClapTrap's 10 - more durable)" << std::endl;
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     TEST 8: COMPARING DURABILITY" << std::endl;
-	std::cout << "========================================" << std::endl;
-	std::cout << "ClapTrap takes fatal damage..." << std::endl;
-	clap.takeDamage(20);
-	clap.attack("Enemy");
+	// TEST 7: Copy constructor
+	std::cout << "     \nTEST 7: COPY CONSTRUCTOR" << std::endl;
+	ScavTrap original("PRIME");
+	original.takeDamage(30);    // 100 - 30 = 70 HP
+	std::cout << "\nCopying PRIME..." << std::endl;
+	ScavTrap clone(original);
+	std::cout << "\nClone attacks (should have same state as PRIME):" << std::endl;
+	clone.attack("CloneTarget");
+	clone.guardGate();
 
-	std::cout << "\nScavTrap takes heavy damage..." << std::endl;
-	scav.takeDamage(70);
-	scav.attack("Enemy");
-	scav.guardGate();
+	// TEST 8: Copy assignment operator
+	std::cout << "     \nTEST 8: ASSIGNMENT OPERATOR" << std::endl;
+	ScavTrap alpha("ALPHA");
+	ScavTrap beta("BETA");
+	alpha.takeDamage(50);   // 100 - 50 = 50 HP
+	std::cout << "\nAssigning ALPHA to BETA..." << std::endl;
+	beta = alpha;
+	std::cout << "\nBETA now has ALPHA's state:" << std::endl;
+	beta.attack("PostAssignment");
 
-	std::cout << "\n========================================" << std::endl;
-	std::cout << "     DESTRUCTORS" << std::endl;
-	std::cout << "========================================" << std::endl;
+	// Destructors called automatically - reverse order of creation
+	// Order: beta, alpha, clone, original, battery, tank, rocky, clappy
+	std::cout << "     \nDESTRUCTORS" << std::endl;
 	return 0;
 }

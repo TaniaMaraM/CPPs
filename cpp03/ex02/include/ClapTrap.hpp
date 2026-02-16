@@ -18,19 +18,23 @@
 
 class ClapTrap {
 protected:
+	// PROTECTED: allows derived classes (ScavTrap, FragTrap) to access
 	std::string name;
 	int hitPoints;
 	int energyPoints;
 	int attackDamage;
 
 public:
+	// Orthodox Canonical Form
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator=(const ClapTrap &other);
-	~ClapTrap();
-	void attack(const std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	~ClapTrap();  // Should be virtual for polymorphic deletion
+
+	// Actions - can be inherited or overridden by derived classes
+	void attack(const std::string& target);  // FragTrap inherits, ScavTrap overrides
+	void takeDamage(unsigned int amount);    // Both inherit as-is
+	void beRepaired(unsigned int amount);    // Both inherit as-is
 };
 
 #endif

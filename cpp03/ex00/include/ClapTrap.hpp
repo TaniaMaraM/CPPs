@@ -18,19 +18,23 @@
 
 class ClapTrap {
 private:
+	// Encapsulation: private state prevents invalid modifications
 	std::string name;
-	int hitPoints;
-	int energyPoints;
+	int hitPoints;      // signed int to detect underflow
+	int energyPoints;   // signed int to detect underflow
 	int attackDamage;
 
 public:
-	ClapTrap(std::string name);
-	ClapTrap(const ClapTrap& other);
-	ClapTrap& operator=(const ClapTrap &other);
-	~ClapTrap();
-	void attack(const std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	// Orthodox Canonical Form (required by subject)
+	ClapTrap(std::string name);              // Constructor with param
+	ClapTrap(const ClapTrap& other);         // Copy constructor
+	ClapTrap& operator=(const ClapTrap &other); // Copy assignment operator
+	~ClapTrap();                             // Destructor
+	
+	// Game actions (cost energy/HP to perform)
+	void attack(const std::string& target);  // costs 1 energy
+	void takeDamage(unsigned int amount);    // passive, no cost
+	void beRepaired(unsigned int amount);    // costs 1 energy
 };
 
 #endif

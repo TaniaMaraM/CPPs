@@ -15,14 +15,22 @@
 
 #include "ClapTrap.hpp"
 
+// VIRTUAL inheritance from ClapTrap - solves Diamond Problem!
+// When DiamondTrap inherits from both ScavTrap and FragTrap,
+// only ONE ClapTrap subobject exists (not two)
+// Stats: 100 HP, 100 Energy, 30 Damage
 class FragTrap : virtual public ClapTrap {
 public:
+	// Orthodox Canonical Form
 	FragTrap(std::string name);
 	FragTrap(const FragTrap& other);
 	FragTrap& operator=(const FragTrap& other);
 	~FragTrap();
 
+	// FragTrap unique ability
 	void highFivesGuys();
+	
+	// NOTE: Does NOT override attack() - uses ClapTrap's version
 };
 
 #endif

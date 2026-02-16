@@ -6,12 +6,15 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:23:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:34:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/16 23:03:05 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
+// VIRTUAL inheritance: when used in DiamondTrap, ClapTrap constructor
+// is called by DiamondTrap directly (not by ScavTrap)
+// ScavTrap stats: 100 HP, 50 Energy, 20 Damage
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->hitPoints = 100;
@@ -38,6 +41,8 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
+// OVERRIDES ClapTrap::attack() with "fiercely" message
+// DiamondTrap uses THIS version via "using ScavTrap::attack;"
 void ScavTrap::attack(const std::string& target)
 {
 	if (this->energyPoints <= 0)

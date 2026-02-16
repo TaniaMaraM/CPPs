@@ -6,12 +6,15 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:39:22 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:39:23 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/16 23:02:43 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "../include/FragTrap.hpp"
 
+// VIRTUAL inheritance: when used in DiamondTrap, ClapTrap constructor
+// is called by DiamondTrap directly (not by FragTrap)
+// FragTrap stats: 100 HP, 100 Energy, 30 Damage
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	this->hitPoints = 100;
