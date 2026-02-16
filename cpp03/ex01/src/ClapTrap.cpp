@@ -6,12 +6,14 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:33:04 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/16 22:11:23 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "../include/ClapTrap.hpp"
 
+// Base constructor: called FIRST when creating any derived class
+// ScavTrap constructor will override these values after
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap " << this->name << " has been created!" << std::endl;
@@ -37,6 +39,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 	return *this;
 }
 
+// Base destructor: called AFTER derived destructor (reverse order)
+// When ScavTrap dies: ~ScavTrap() runs first, then ~ClapTrap()
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " has been destroyed!" << std::endl;

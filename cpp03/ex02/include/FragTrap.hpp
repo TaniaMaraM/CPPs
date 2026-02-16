@@ -15,14 +15,21 @@
 
 #include "ClapTrap.hpp"
 
+// PUBLIC inheritance from ClapTrap (sibling of ScavTrap)
+// Stats: 100 HP, 100 Energy, 30 Damage
+// KEY: Does NOT override attack() - uses ClapTrap's message
 class FragTrap : public ClapTrap {
 public:
+	// Orthodox Canonical Form
 	FragTrap(std::string name);
 	FragTrap(const FragTrap& other);
 	FragTrap& operator=(const FragTrap& other);
 	~FragTrap();
 
+	// FragTrap unique ability
 	void highFivesGuys();
+	
+	// NOTE: attack() NOT declared here - inherited from ClapTrap without override
 };
 
 #endif

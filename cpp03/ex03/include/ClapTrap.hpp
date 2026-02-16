@@ -18,16 +18,21 @@
 
 class ClapTrap {
 protected:
+	// PROTECTED: allows derived classes to access
+	// NOTE: DiamondTrap stores "name_clap_name" here
 	std::string name;
 	int hitPoints;
 	int energyPoints;
 	int attackDamage;
 
 public:
+	// Orthodox Canonical Form
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator=(const ClapTrap &other);
-	~ClapTrap();
+	~ClapTrap();  // Should be virtual for polymorphic deletion
+
+	// Actions - inherited or overridden by derived classes
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);

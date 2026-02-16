@@ -17,14 +17,17 @@ Fixed::Fixed(void) : fixedPointValue(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+// Int constructor: left shift by 8 = multiply by 256 (faster than n * 256)
 Fixed::Fixed(const int n) : fixedPointValue(n << fractionalBits) {
 	std::cout << "Int constructor called" << std::endl;
 }
 
+// Float constructor: multiply by 256, round to nearest int (preserves precision better than truncation)
 Fixed::Fixed(const float f) : fixedPointValue(roundf(f * (1 << fractionalBits))) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
+// Copy constructor - calls operator= to avoid code duplication
 Fixed::Fixed(const Fixed& other) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
@@ -44,10 +47,12 @@ Fixed& Fixed::operator=(const Fixed& other) {
 }
 
 // Conversions
+// Cast to float before division to get proper decimals (int/int would truncate)
 float Fixed::toFloat(void) const {
 	return static_cast<float>(this->fixedPointValue) / (1 << fractionalBits);
 }
 
+// Right shift by 8 = divide by 256, discarding fractional part (extracts integer part)
 int Fixed::toInt(void) const {
 	return this->fixedPointValue >> fractionalBits;
 }
@@ -62,8 +67,9 @@ void Fixed::setRawBits(int const raw) {
 	this->fixedPointValue = raw;
 }
 
-// Operator overload (outside class)
+// Operator overload (outside class) - enables cout << myFixed
+// Returns ostream& to enable chaining: cout << a << b works left-to-right
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
-	out << fixed.toFloat();
+	out << fixed.toFloat();	// Print as decimal representation
 	return out;
 }
