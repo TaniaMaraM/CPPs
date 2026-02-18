@@ -6,39 +6,39 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:45:50 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:30:31 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 22:45:51 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Cat.hpp"
 
-// Constructor: ALOCA memória para Brain
 Cat::Cat() {
     this->type = "Cat";
-    this->brain = new Brain();  // Aloca Brain na heap
+    this->brain = new Brain();  // allocate on heap (must delete in dtor)
     std::cout << "Cat default constructor called" << std::endl;
 }
-// Copy constructor: cria NOVO Brain e copia conteúdo (DEEP COPY!)
-Cat::Cat(const Cat& other) : Animal(other) {
-    this->brain = new Brain(*other.brain);  // Cria NOVO Brain copiando o do other
+
+Cat::Cat(const Cat& other) : Animal(other) {  // copy base part (type)
+    this->brain = new Brain(*other.brain);  // deep copy new Brain
     std::cout << "Cat copy constructor called" << std::endl;
 }
-// Assignment operator: deleta Brain antigo, cria novo, copia (DEEP COPY!)
+
 Cat& Cat::operator=(const Cat& other) {
     std::cout << "Cat assignment operator called" << std::endl;
-    if (this != &other) {
-        Animal::operator=(other);
-        delete this->brain;                  // Liberta Brain antigo
-        this->brain = new Brain(*other.brain);  // Cria novo e copia
+    if (this != &other) {  // self-assignment guard
+        Animal::operator=(other);  // copy base part
+        delete this->brain;  // free old brain
+        this->brain = new Brain(*other.brain);  // deep copy new Brain
     }
     return *this;
 }
-// Destructor: LIBERTA memória do Brain
+
 Cat::~Cat() {
-    delete this->brain;  // Liberta Brain da heap
+    delete this->brain;
     std::cout << "Cat destructor called" << std::endl;
 }
-void Cat::makeSound() const {
+
+void Cat::makeSound() const {  // override of pure virtual - required or won't compile
     std::cout << "Meow! Meow!" << std::endl;
 }
 

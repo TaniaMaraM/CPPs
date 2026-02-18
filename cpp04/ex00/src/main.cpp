@@ -6,18 +6,19 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:18:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:54:29 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:01:14 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "../include/Animal.hpp"
+#include "../include/Dog.hpp"
+#include "../include/Cat.hpp"
+#include "../include/WrongAnimal.hpp"
+#include "../include/WrongCat.hpp"
 
 int main()
 {
+    //polimorfism - same type Animal but diferent behaviors
     std::cout << "=== Testing correct polymorphism ===" << std::endl;
     const Animal* meta = new Animal();
     const Animal* j = new Dog();

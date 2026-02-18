@@ -6,11 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:52:46 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:52:50 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 16:21:51 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
+#include "../include/WrongCat.hpp"
 
 WrongCat::WrongCat() {
     this->type = "WrongCat";

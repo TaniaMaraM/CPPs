@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:35:23 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:47:43 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 20:56:50 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,3 @@ public:
 };
 
 #endif
-
-/*
-The difference: NO virtual keyword on destructor or makeSound().
-WrongCat inherits from WrongAnimal exactly like Cat inherits from Animal.
-Result: When you do WrongAnimal* cat = new WrongCat(), 
-calling cat->makeSound() gives you WrongAnimal's sound, 
-not WrongCat's - demonstrating the problem
-*/

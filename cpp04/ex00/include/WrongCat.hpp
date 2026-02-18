@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:35:09 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:51:34 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 16:25:23 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
     WrongCat& operator=(const WrongCat& other);
     ~WrongCat();
     
-    void makeSound() const;  // NOT virtual (inherited non-virtual)
+    void makeSound() const;
 };
 
 #endif

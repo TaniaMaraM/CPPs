@@ -6,11 +6,11 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:56:20 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:50:30 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:14:21 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "../include/Animal.hpp"
 
 //default constructor
 Animal::Animal() : type("Animal") {
@@ -23,10 +23,10 @@ Animal::Animal(const Animal& other) : type(other.type) {
 
 Animal& Animal::operator=(const Animal& other) {
     std::cout << "Animal assignment operator called" << std::endl;
-    if (this != &other) {
+    if (this != &other) { // self-assignment guard - avoids a = a
         this->type = other.type;
     }
-    return *this;
+    return *this; // object itself - return it so (a = b = c) works (chaining)
 }
 
 Animal::~Animal(){

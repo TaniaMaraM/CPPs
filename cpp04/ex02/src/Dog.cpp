@@ -6,29 +6,29 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:44:15 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:30:37 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 22:45:58 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Dog.hpp"
 
 Dog::Dog() {
-    this->type = "Dog";  // Set inherited type attribute
-    this->brain = new Brain();
+    this->type = "Dog";
+    this->brain = new Brain();  // allocate on heap (must delete in dtor)
     std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other) {  // Call parent copy constructor
-    this->brain = new Brain(*other.brain);
+Dog::Dog(const Dog& other) : Animal(other) {  // copy base
+    this->brain = new Brain(*other.brain);  // deep copy new Brain
     std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& other) {
     std::cout << "Dog assignment operator called" << std::endl;
-    if (this != &other) {
-        Animal::operator=(other);  // Call parent assignment
-        delete this->brain;                  // ← ADICIONAR: liberta Brain antigo
-        this->brain = new Brain(*other.brain);  // ← ADICIONAR: cria novo e copia
+    if (this != &other) {  // self-assignment guard
+        Animal::operator=(other);  // copy base part
+        delete this->brain;  // free old brain
+        this->brain = new Brain(*other.brain); // deep copy new Brain
     }
     return *this;
 }
@@ -38,6 +38,6 @@ Dog::~Dog() {
     std::cout << "Dog destructor called" << std::endl;
 }
 
-void Dog::makeSound() const {
+void Dog::makeSound() const {  // override of pure virtual - required or won't compile
     std::cout << "Woof! Woof!" << std::endl;
 }

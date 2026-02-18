@@ -6,37 +6,36 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:18:35 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:18:55 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 22:58:05 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_CPP
-#define ANIMAL_CPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <string>
 #include <iostream>
 
 class Animal {
 protected:
-    std::string type; //accesible by Animal and its children (dog and cat)
+    std::string type;
 public:
     Animal();
     Animal(const Animal& other);
     Animal& operator=(const Animal& other);
-    virtual ~Animal(); //virtual pra apagar o animal que esta apontado para o dog por ex. deleta tudo
+    virtual ~Animal();
     
-    virtual void makeSound() const = 0; // Pure virtual - Animal is now ABSTRACT!
+    virtual void makeSound() const = 0;  // pure virtual: Animal is abstract - Dog/Cat must override
     std::string getType() const;
 };
 
 #endif
 
-/*
-An abstract class contains at least one pure virtual function (marked with = 0). Key properties:
-Cannot be instantiated - you cannot create objects of an abstract class
-Forces derived classes to implement the pure virtual function
-Serves as an interface - defines what derived classes must do
 
-Uma classe abstracta é uma classe que não pode ser instanciada directamente 
-- só existe para ser herdada. É como um "conceito" ou "template" que define o que as classes derivadas devem implementar.
+/*
+-> Virtual means: this function has a default implementation in the base class,
+but derived classes may override it if they want to. 
+-> Pure virtual means: there is no implementation at all in the base class 
+— derived classes must provide one, 
+or they also become abstract and can't be instantiated.
 */

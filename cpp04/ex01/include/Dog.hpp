@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:30:55 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:31:27 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:33:43 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 class Dog : public Animal {
 private:
-    Brain* brain;
+    Brain* brain;  // heap-allocated
     
 public:
     Dog();
     Dog(const Dog& other);
-    Dog& operator=(const Dog& other);
+    Dog& operator=(const Dog& other); 
     ~Dog();
 
     void makeSound() const;

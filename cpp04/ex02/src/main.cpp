@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:18:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:05:21 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 22:41:12 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 int main()
 {
-    // NOTE: Uncommenting below should cause compilation error (Animal is abstract)
+    // Uncommenting below will cause compilation error because Animal is abstract
     // Animal* impossible = new Animal();
-    
+   
     std::cout << "--- Subject required test: polymorphic animals ---" << std::endl;
     {
         const Animal* canine = new Dog();

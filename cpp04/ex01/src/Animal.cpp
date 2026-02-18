@@ -6,13 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:56:20 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:40:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:15:25 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Animal.hpp"
 
-//default constructor
 Animal::Animal() : type("Animal") {
     std::cout << "Animal default constructor called" << std::endl;
 }
@@ -23,10 +22,10 @@ Animal::Animal(const Animal& other) : type(other.type) {
 
 Animal& Animal::operator=(const Animal& other) {
     std::cout << "Animal assignment operator called" << std::endl;
-    if (this != &other) {
+    if (this != &other) {  // self-assignment guard
         this->type = other.type;
     }
-    return *this;
+    return *this;  // return ref for chaining (a = b = c)
 }
 
 Animal::~Animal(){

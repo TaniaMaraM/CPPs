@@ -6,29 +6,29 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:44:15 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:31:12 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:46:59 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Dog.hpp"
 
 Dog::Dog() {
-    this->type = "Dog";  // Set inherited type attribute
-    this->brain = new Brain();
+    this->type = "Dog";
+    this->brain = new Brain();  // allocate on heap
     std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other) {  // Call parent copy constructor
-    this->brain = new Brain(*other.brain);
+Dog::Dog(const Dog& other) : Animal(other) {
+    this->brain = new Brain(*other.brain); // deep copy new Brain
     std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& other) {
     std::cout << "Dog assignment operator called" << std::endl;
-    if (this != &other) {
-        Animal::operator=(other);  // Call parent assignment
-        delete this->brain;                  // ← ADICIONAR: liberta Brain antigo
-        this->brain = new Brain(*other.brain);  // ← ADICIONAR: cria novo e copia
+    if (this != &other) {  // self-assignment guard
+        Animal::operator=(other);  // copy base part
+        delete this->brain;  // free old brain (avoid leak)
+        this->brain = new Brain(*other.brain);  // deep copy new Brain
     }
     return *this;
 }

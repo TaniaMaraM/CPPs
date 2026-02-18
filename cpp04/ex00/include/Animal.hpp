@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.hpp                                         :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:18:35 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/04 20:50:48 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:18:19 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_CPP
-#define ANIMAL_CPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <string>
 #include <iostream>
 
 class Animal {
 protected:
-    std::string type; //accesible by Animal and its children (dog and cat)
+    std::string type;
 public:
     Animal();
     Animal(const Animal& other);
     Animal& operator=(const Animal& other);
-    virtual ~Animal(); //virtual pra apagar o animal que esta apontado para o dog por ex. deleta tudo
+    virtual ~Animal(); //LIFO
     
-    virtual void makeSound() const;
+    virtual void makeSound() const; //virtual = override allowed
     std::string getType() const;
 };
 

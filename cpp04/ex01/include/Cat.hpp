@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:30:53 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/11 20:31:24 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/18 21:33:26 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Cat : public Animal {
 private:
-    Brain* brain;  // Ponteiro para Brain (alocado com new)
+    Brain* brain;  // heap-allocated - deep copy
     
 public:
     Cat();
