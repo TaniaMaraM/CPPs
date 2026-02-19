@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 19:06:36 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 19:24:19 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 13:06:37 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 class Harl {
 private:
-    void debug();    // mensagem DEBUG
+    void debug();
     void info();
     void warning();
     void error();
 public:
-    void complain(std::string level);  // chama função baseado no nível
+    void complain(std::string level);
 };
 
 #endif

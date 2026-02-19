@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 22:11:23 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:24:56 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 	return *this;
 }
 
-// Base destructor: called AFTER derived destructor (reverse order)
-// When ScavTrap dies: ~ScavTrap() runs first, then ~ClapTrap()
+// Base destructor called AFTER derived destructor (LIFO)
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " has been destroyed!" << std::endl;

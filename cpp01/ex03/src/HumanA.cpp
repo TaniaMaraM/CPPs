@@ -6,13 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:44:06 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 14:24:12 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:58:25 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-// IMPORTANTE: reference DEVE ser inicializada na initialization list!
 HumanA::HumanA(std::string name, Weapon& weapon) : name(name), weapon(weapon) {
 }
 

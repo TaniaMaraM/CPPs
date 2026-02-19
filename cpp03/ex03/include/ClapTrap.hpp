@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:29 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:26:51 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:37:42 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 class ClapTrap {
 protected:
-	// PROTECTED: allows derived classes to access
-	// NOTE: DiamondTrap stores "name_clap_name" here
 	std::string name;
 	int hitPoints;
 	int energyPoints;
@@ -30,9 +28,9 @@ public:
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& other);
 	ClapTrap& operator=(const ClapTrap &other);
-	~ClapTrap();  // Should be virtual for polymorphic deletion
+	~ClapTrap();
 
-	// Actions - inherited or overridden by derived classes
+	//game actions - can be inherited or overridden by derived classes
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);

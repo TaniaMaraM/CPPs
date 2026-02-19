@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:12:59 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 16:53:34 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 13:27:35 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../include/Fixed.hpp"
 
 int main(void) {
+	// Subject's required tests
 	Fixed a;
 	Fixed const b(Fixed(5.05f) * Fixed(2));
 
@@ -25,52 +26,100 @@ int main(void) {
 	std::cout << b << std::endl;
 	std::cout << Fixed::max(a, b) << std::endl;
 
-	// my own tests for learning purporse
-	std::cout << "\n=== TEST 1: COMPARISON OPERATORS ===" << std::endl;
-	Fixed x(10);
-	Fixed y(20);
-	std::cout << "x = " << x << ", y = " << y << std::endl;
-	std::cout << "x > y: " << (x > y) << " (false = 0)" << std::endl;
-	std::cout << "x < y: " << (x < y) << " (true = 1)" << std::endl;
-	std::cout << "x == Fixed(10): " << (x == Fixed(10)) << " (true)" << std::endl;
-	std::cout << "x != y: " << (x != y) << " (true)" << std::endl;
+	// Additional comprehensive tests
+	{
+		std::cout << "\n=== Testing Arithmetic Operators ===" << std::endl;
+		Fixed x(10);
+		Fixed y(3);
 
-	std::cout << "\n=== TEST 2: ARITHMETIC OPERATORS ===" << std::endl;
-	Fixed n1(10);
-	Fixed n2(3);
-	std::cout << "n1 = " << n1 << ", n2 = " << n2 << std::endl;
-	std::cout << "n1 + n2 = " << (n1 + n2) << std::endl;
-	std::cout << "n1 - n2 = " << (n1 - n2) << std::endl;
-	std::cout << "n1 * n2 = " << (n1 * n2) << std::endl;
-	std::cout << "n1 / n2 = " << (n1 / n2) << std::endl;
+		std::cout << "x = " << x << std::endl;
+		std::cout << "y = " << y << std::endl;
+		std::cout << "x + y = " << (x + y) << std::endl;
+		std::cout << "x - y = " << (x - y) << std::endl;
+		std::cout << "x * y = " << (x * y) << std::endl;
+		std::cout << "x / y = " << (x / y) << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing Floating Point Precision ===" << std::endl;
+		Fixed p(0.5f);
+		Fixed q(0.25f);
 
-	std::cout << "\n=== TEST 3: PRE vs POST INCREMENT ===" << std::endl;
-	Fixed pre(5);
-	Fixed post(5);
-	std::cout << "Initial: pre = " << pre << ", post = " << post << std::endl;
-	std::cout << "++pre returns: " << ++pre << " (incremented BEFORE)" << std::endl;
-	std::cout << "After ++pre: " << pre << std::endl;
-	std::cout << "post++ returns: " << post++ << " (returns OLD value)" << std::endl;
-	std::cout << "After post++: " << post << " (NOW incremented)" << std::endl;
+		std::cout << "p = " << p << std::endl;
+		std::cout << "q = " << q << std::endl;
+		std::cout << "p + q = " << (p + q) << std::endl;
+		std::cout << "p * q = " << (p * q) << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing Comparison Operators ===" << std::endl;
+		Fixed a1(5);
+		Fixed a2(5);
+		Fixed a3(10);
 
-	std::cout << "\n=== TEST 4: WHAT IS THE INCREMENT VALUE? ===" << std::endl;
-	Fixed tiny(0);
-	std::cout << "Start: " << tiny << " (rawBits: " << tiny.getRawBits() << ")" << std::endl;
-	++tiny;
-	std::cout << "After ++: " << tiny << " (rawBits: " << tiny.getRawBits() << ")" << std::endl;
-	std::cout << "Increment = 1/256 = " << (1.0f/256.0f) << std::endl;
+		std::cout << "a1 = " << a1 << std::endl;
+		std::cout << "a2 = " << a2 << std::endl;
+		std::cout << "a3 = " << a3 << std::endl;
+		std::cout << "a1 == a2: " << (a1 == a2) << std::endl;
+		std::cout << "a1 != a3: " << (a1 != a3) << std::endl;
+		std::cout << "a1 < a3: " << (a1 < a3) << std::endl;
+		std::cout << "a3 > a2: " << (a3 > a2) << std::endl;
+		std::cout << "a1 <= a2: " << (a1 <= a2) << std::endl;
+		std::cout << "a3 >= a1: " << (a3 >= a1) << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing Increment/Decrement ===" << std::endl;
+		Fixed v1(5);
+		Fixed v2(5);
 
-	std::cout << "\n=== TEST 5: MIN & MAX ===" << std::endl;
-	Fixed m1(42.5f);
-	Fixed m2(10.2f);
-	std::cout << "m1 = " << m1 << ", m2 = " << m2 << std::endl;
-	std::cout << "Fixed::min(m1, m2) = " << Fixed::min(m1, m2) << std::endl;
-	std::cout << "Fixed::max(m1, m2) = " << Fixed::max(m1, m2) << std::endl;
+		std::cout << "Initial: v1 = " << v1 << ", v2 = " << v2 << std::endl;
+		std::cout << "++v1 returns: " << ++v1 << std::endl;
+		std::cout << "v1 after ++v1: " << v1 << std::endl;
+		std::cout << "v2++ returns: " << v2++ << std::endl;
+		std::cout << "v2 after v2++: " << v2 << std::endl;
+		std::cout << "--v1 returns: " << --v1 << std::endl;
+		std::cout << "v1-- returns: " << v1-- << std::endl;
+		std::cout << "v1 after v1--: " << v1 << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing min/max (non-const) ===" << std::endl;
+		Fixed b1(15.5f);
+		Fixed b2(7.25f);
 
-	std::cout << "\n=== TEST 6: DIVISION BY ZERO (CAREFUL!) ===" << std::endl;
-	Fixed div1(10);
-	Fixed div2(0);
-	std::cout << "10 / 0 = " << (div1 / div2) << " (undefined!)" << std::endl;
+		std::cout << "b1 = " << b1 << std::endl;
+		std::cout << "b2 = " << b2 << std::endl;
+		std::cout << "Fixed::min(b1, b2) = " << Fixed::min(b1, b2) << std::endl;
+		std::cout << "Fixed::max(b1, b2) = " << Fixed::max(b1, b2) << std::endl;
+
+		Fixed &maxRef = Fixed::max(b1, b2);
+		std::cout << "\nModifying max (b1) to 100..." << std::endl;
+		maxRef = Fixed(100);
+		std::cout << "After modification: b1 = " << b1 << ", b2 = " << b2 << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing min/max (const) ===" << std::endl;
+		Fixed const c1(8.5f);
+		Fixed const c2(12.75f);
+
+		std::cout << "c1 = " << c1 << std::endl;
+		std::cout << "c2 = " << c2 << std::endl;
+		std::cout << "Fixed::min(c1, c2) = " << Fixed::min(c1, c2) << std::endl;
+		std::cout << "Fixed::max(c1, c2) = " << Fixed::max(c1, c2) << std::endl;
+	}
+	{
+		std::cout << "\n=== Testing Negative Numbers ===" << std::endl;
+		Fixed n1(-7.5f);
+		Fixed n2(3.25f);
+		Fixed n3(-2.5f);
+
+		std::cout << "n1 = " << n1 << std::endl;
+		std::cout << "n2 = " << n2 << std::endl;
+		std::cout << "n3 = " << n3 << std::endl;
+		std::cout << "n1 + n2 = " << (n1 + n2) << std::endl;
+		std::cout << "n1 - n2 = " << (n1 - n2) << std::endl;
+		std::cout << "n1 * n2 = " << (n1 * n2) << std::endl;
+		std::cout << "n1 / n3 = " << (n1 / n3) << std::endl;
+		std::cout << "n1 < n2: " << (n1 < n2) << std::endl;
+		std::cout << "n3 > n1: " << (n3 > n1) << std::endl;
+	}
 
 	return 0;
 }

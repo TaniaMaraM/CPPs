@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:22:37 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:26:52 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:32:22 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include "ClapTrap.hpp"
 
-// PUBLIC inheritance from ClapTrap
-// Stats: 100 HP, 50 Energy, 20 Damage
 class ScavTrap : public ClapTrap {
 public:
 	// Orthodox Canonical Form
@@ -25,7 +23,7 @@ public:
 	ScavTrap& operator=(const ScavTrap& other);
 	~ScavTrap();
 
-	// OVERRIDES ClapTrap::attack() with "fiercely" message
+	// overrides ClapTrap::attack() with different message
 	void attack(const std::string& target);
 	// ScavTrap unique ability
 	void guardGate();

@@ -6,14 +6,14 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 23:02:48 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:39:48 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-// Base constructor: called FIRST in virtual inheritance chain
-// In DiamondTrap: this is called ONCE (not twice) thanks to virtual inheritance
+// Base constructor: called first in virtual inheritance chain
+// In DiamondTrap: this is called once (not twice) thanks to virtual inheritance
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap " << this->name << " has been created!" << std::endl;
@@ -39,8 +39,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 	return *this;
 }
 
-// Base destructor: called LAST in destruction (after all derived)
-// In DiamondTrap: called only ONCE thanks to virtual inheritance
+//destructor
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " has been destroyed!" << std::endl;
