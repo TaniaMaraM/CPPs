@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:43:56 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 18:16:21 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:58:05 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 class HumanB {
 private:
     std::string name;
-    Weapon* weapon;  // ← POINTER! Pode ser NULL (sem arma)
-    
+    Weapon* weapon;
+
 public:
-    HumanB(std::string name);  // NÃO recebe arma (pode começar desarmado)
-    void setWeapon(Weapon& weapon);  // dá arma depois
+    HumanB(std::string name);
+    void setWeapon(Weapon& weapon);
     void attack() const;
 };
 

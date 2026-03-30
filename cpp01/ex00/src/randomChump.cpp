@@ -6,13 +6,13 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:30:07 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 14:23:19 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 13:12:35 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../include/Zombie.hpp"
 
 void randomChump(std::string name) {
-	Zombie zombie(name); //chama constructor automaticamente - Stack
+	Zombie zombie(name);
 	zombie.announce();
-} //destructor automatico aqui
+}

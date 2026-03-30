@@ -6,13 +6,13 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:26 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 22:57:09 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:33:25 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-// Base constructor: called FIRST when creating derived classes
+// Base constructor: called first when creating derived classes
 // Derived classes (ScavTrap, FragTrap) override these values in their constructor body
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
@@ -46,7 +46,7 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
-// Attack: ScavTrap OVERRIDES this, FragTrap INHERITS this
+// Attack: ScavTrap override this, FragTrap inherit this
 void ClapTrap::attack(const std::string& target)
 {
 	if (this->energyPoints <= 0)

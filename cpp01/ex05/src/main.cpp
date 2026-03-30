@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 19:06:48 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 18:28:07 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 13:07:23 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int main() {
 
     std::cout << "\n=== ERROR ===" << std::endl;
     harl.complain("ERROR");
-
-    /*std::cout << "\n=== INVALID ===" << std::endl;
-    harl.complain("INVALID");*/
 
     return 0;
 }

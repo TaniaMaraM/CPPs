@@ -6,24 +6,23 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:23:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 22:11:28 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:28:00 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
 
-// CONSTRUCTOR CHAINING: ClapTrap(name) called first via initializer list
-// Then body executes to override with ScavTrap's stats (100/50/20)
+// constructor chaining ClapTrap(name) called first via initializer list
+// Then body executes to override with ScavTrap stats (100/50/20)
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->hitPoints = 100;     // Override ClapTrap's 10
-	this->energyPoints = 50;   // Override ClapTrap's 10
-	this->attackDamage = 20;   // Override ClapTrap's 0
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
 	std::cout << "ScavTrap " << this->name << " has been created!" << std::endl;
 }
 
 // Copy constructor: calls ClapTrap's copy constructor to copy base portion
-// ClapTrap(other) works because ScavTrap "is-a" ClapTrap (upcasting)
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
@@ -38,13 +37,13 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 	return *this;
 }
 
-// Destructor: runs FIRST, then ClapTrap destructor runs automatically
+// Destructor
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
-// OVERRIDES ClapTrap::attack() - same logic, different message
+// overrides ClapTrap::attack() - same logic, different message
 // Uses "fiercely" and shows 20 damage instead of 0
 void ScavTrap::attack(const std::string& target)
 {
@@ -63,7 +62,7 @@ void ScavTrap::attack(const std::string& target)
 			  << " fiercely, causing " << this->attackDamage << " points of damage!" << std::endl;
 }
 
-// ScavTrap-only ability - ClapTrap doesn't have this
+// ScavTrap-only ability
 void ScavTrap::guardGate()
 {
 	std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode!" << std::endl;

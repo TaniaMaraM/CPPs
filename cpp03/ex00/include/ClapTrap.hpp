@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:15:29 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 17:53:45 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:12:14 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@
 
 class ClapTrap {
 private:
-	// Encapsulation: private state prevents invalid modifications
 	std::string name;
-	int hitPoints;      // signed int to detect underflow
-	int energyPoints;   // signed int to detect underflow
+	int hitPoints;
+	int energyPoints;
 	int attackDamage;
 
 public:
-	// Orthodox Canonical Form (required by subject)
-	ClapTrap(std::string name);              // Constructor with param
-	ClapTrap(const ClapTrap& other);         // Copy constructor
-	ClapTrap& operator=(const ClapTrap &other); // Copy assignment operator
-	~ClapTrap();                             // Destructor
-	
-	// Game actions (cost energy/HP to perform)
+	// Orthodox Canonical Form
+	ClapTrap(std::string name);
+	ClapTrap(const ClapTrap& other);
+	ClapTrap& operator=(const ClapTrap &other);
+	~ClapTrap();
+
+	// Game actions
 	void attack(const std::string& target);  // costs 1 energy
 	void takeDamage(unsigned int amount);    // passive, no cost
 	void beRepaired(unsigned int amount);    // costs 1 energy

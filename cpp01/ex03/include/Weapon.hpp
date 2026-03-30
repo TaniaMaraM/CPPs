@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:42:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 18:12:02 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:58:16 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 class Weapon {
 private:
     std::string type;
-    
+
 public:
-    Weapon(std::string type);  // constructor com tipo
-    
-    const std::string& getType() const;  // ← retorna REFERENCE (não copia!)
-    void setType(std::string type);      // muda o tipo
+    Weapon(std::string type);
+
+    const std::string& getType() const;
+    void setType(std::string type);
 };
 
 #endif

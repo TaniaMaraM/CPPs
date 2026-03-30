@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:22:42 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 22:11:17 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:29:49 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main()
 {
 	// TEST 1: Constructor chaining - ClapTrap first, then ScavTrap
-	// Destructor order is reverse - ScavTrap first, then ClapTrap
 	std::cout << "     \nTEST 1: CONSTRUCTOR/DESTRUCTOR CHAINING" << std::endl;
 	{
 		ScavTrap isolated("NEXUS");
@@ -49,13 +48,13 @@ int main()
 	std::cout << "     \nTEST 5: SCAVTRAP DURABILITY (100 HP)" << std::endl;
 	std::cout << "ClapTrap dies from 15 damage (only has 10 HP):" << std::endl;
 	clappy.takeDamage(15);
-	clappy.attack("Target");    // MUST fail: dead
-	clappy.beRepaired(5);       // MUST fail: dead
+	clappy.attack("Target");    //fail: dead
+	clappy.beRepaired(5);       //fail: dead
 
 	std::cout << "\nScavTrap survives 95 damage (has 100 HP):" << std::endl;
 	ScavTrap tank("TANK");
 	tank.takeDamage(95);        // 100 - 95 = 5 HP
-	tank.attack("Survivor");    // Should work: still alive
+	tank.attack("Survivor");    // still alive
 
 	// TEST 6: Energy limit - ScavTrap has 50 energy (vs ClapTrap's 10)
 	std::cout << "     \nTEST 6: ENERGY EXHAUSTION" << std::endl;
@@ -86,8 +85,7 @@ int main()
 	std::cout << "\nBETA now has ALPHA's state:" << std::endl;
 	beta.attack("PostAssignment");
 
-	// Destructors called automatically - reverse order of creation
-	// Order: beta, alpha, clone, original, battery, tank, rocky, clappy
+	// Destructors called automatically
 	std::cout << "     \nDESTRUCTORS" << std::endl;
 	return 0;
 }

@@ -6,20 +6,20 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:08:22 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/29 16:06:42 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 12:48:04 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "../include/Fixed.hpp"
 
-int main( void ) {
+int main(void) {
 
 	Fixed a;
 
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
 
 	a = Fixed( 1234.4321f );
 
@@ -32,9 +32,7 @@ int main( void ) {
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-	// ========================================================================
-	// EXTRA TESTS 
-	// ========================================================================
+	// EXTRA TESTS
 	std::cout << "\n=== TEST 1: Fixed-Point Precision ===" << std::endl;
 	Fixed test1(0.5f);
 	std::cout << "0.5f -> Fixed -> toFloat(): " << test1.toFloat() << std::endl;
@@ -59,15 +57,7 @@ int main( void ) {
 	std::cout << "1/256 (0.00390625f): " << test5 << std::endl;
 	std::cout << "0.001f: " << test6 << " (loses precision!)" << std::endl;
 
-	std::cout << "\n=== TEST 5: setRawBits vs Constructor ===" << std::endl;
-	Fixed test7;
-	test7.setRawBits(2560);  // 2560 / 256 = 10
-	Fixed test8(10);          // 10 × 256 = 2560
-	std::cout << "setRawBits(2560): " << test7 << std::endl;
-	std::cout << "Fixed(10): " << test8 << std::endl;
-	std::cout << "Both have rawBits = " << test7.getRawBits() << std::endl;
-
-	std::cout << "\n=== TEST 6: Zero ===" << std::endl;
+	std::cout << "\n=== TEST 5: Zero ===" << std::endl;
 	Fixed test9;
 	Fixed test10(0);
 	Fixed test11(0.0f);

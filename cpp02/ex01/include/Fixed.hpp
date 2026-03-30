@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:07:38 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 21:29:39 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 12:27:57 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,25 @@
 
 class Fixed {
 private:
-	int					fixedPointValue;	// Stores value * 256 (8 fractional bits)
-	static const int	fractionalBits = 8;	// All Fixed objects share this constant
+	int					fixedPointValue; // Stores value * 256 (8 fractional bits)
+	static const int	fractionalBits = 8; //shared by all instances
 
 public:
 	// Constructors & Destructor (Orthodox Canonical Form)
-	Fixed( void );							// Default: initialises to 0
-	Fixed( const int n );					// Converts int to fixed-point (n << 8)
-	Fixed( const float f );					// Converts float to fixed-point (f * 256, rounded)
-	Fixed( const Fixed& other );			// Copy constructor
-	Fixed& operator=( const Fixed& other );	// Copy assignment operator
-	~Fixed( void );							// Destructor
-	// Conversions - both const because they only read, don't modify
-	float	toFloat( void ) const;			// Converts back to float (rawBits / 256)
-	int		toInt( void ) const;			// Extracts integer part (rawBits >> 8)
+	Fixed(void);
+	Fixed(const int n);
+	Fixed(const float f);
+	Fixed(const Fixed& other);
+	Fixed& operator=(const Fixed& other);
+	~Fixed(void);
+	//Conversions
+	float	toFloat(void) const;
+	int		toInt(void) const;
 	// Getters/Setters
-	int		getRawBits( void ) const;
-	void	setRawBits( int const raw );
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 };
 
-// MUST be outside class: left operand is std::ostream, not Fixed
-// If member function, syntax would be myFixed << cout (backwards!)
-std::ostream& operator<<( std::ostream& out, const Fixed& fixed );
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif
-
-/*
-Fixed-point numbers represent fractional values using integers (more predictable than floating-point).
-Your Fixed class stores a 32-bit 
-integer where 8 bits represent the fractional part. 
-*/

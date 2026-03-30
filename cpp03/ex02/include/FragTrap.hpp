@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:39:13 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/30 18:40:23 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:31:46 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 #include "ClapTrap.hpp"
 
-// PUBLIC inheritance from ClapTrap (sibling of ScavTrap)
-// Stats: 100 HP, 100 Energy, 30 Damage
-// KEY: Does NOT override attack() - uses ClapTrap's message
 class FragTrap : public ClapTrap {
 public:
 	// Orthodox Canonical Form
@@ -28,8 +25,6 @@ public:
 
 	// FragTrap unique ability
 	void highFivesGuys();
-	
-	// NOTE: attack() NOT declared here - inherited from ClapTrap without override
 };
 
 #endif

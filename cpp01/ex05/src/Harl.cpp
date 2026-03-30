@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 19:06:46 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 19:14:41 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 13:07:06 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,21 @@ void Harl::error() {
 }
 
 void Harl::complain(std::string level) {
-    // Array de nomes dos níveis
     std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    
-    // Array de pointers para member functions
+
     void (Harl::*functions[])() = {
         &Harl::debug,
         &Harl::info,
         &Harl::warning,
         &Harl::error
     };
-    
-    // Procura o nível e chama a função correspondente
+
     for (int i = 0; i < 4; i++) {
         if (levels[i] == level) {
-            (this->*functions[i])();  // chama a função!
+            (this->*functions[i])();
             return;
         }
     }
-    
+
     std::cout << "Unknown level: " << level << std::endl;
 }

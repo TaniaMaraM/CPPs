@@ -6,18 +6,17 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:44:08 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/01/28 18:15:06 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:59:44 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type) : type(type) { //Quando eu criar um Weapon, inicialize o atributo type
-//usando o parâmetro type que eu recebi.
+Weapon::Weapon(std::string type) : type(type) {
 }
 
 const std::string& Weapon::getType() const {
-    return type;  // retorna referência (não copia string!)
+    return type;
 }
 
 void Weapon::setType(std::string type) {

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:39:22 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/02/16 22:57:03 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/02/17 17:36:03 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,3 @@ void FragTrap::highFivesGuys()
 	std::cout << "FragTrap " << this->name << " requests a positive high five! ✋" << std::endl;
 }
 
-// NOTE: attack() is NOT implemented here - FragTrap uses ClapTrap's version
-// This is different from ScavTrap which OVERRIDES attack() with "fiercely"
