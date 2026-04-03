@@ -6,11 +6,11 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 11:07:28 by tmarcos           #+#    #+#              #
-#    Updated: 2026/04/02 12:07:50 by tmarcos          ###   ########.fr        #
+#    Updated: 2026/04/03 18:36:02 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = Form
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include
@@ -21,6 +21,7 @@ OBJ_DIR = obj
 
 SRC = main.cpp \
 	  Bureaucrat.cpp \
+	  Form.cpp \
 
 OBJ = $(SRC:%.cpp=obj/%.o)
 

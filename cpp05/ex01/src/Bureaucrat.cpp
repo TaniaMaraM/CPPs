@@ -6,11 +6,12 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 11:51:25 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/04/02 16:31:45 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/04/03 18:35:03 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
 
 // These return the error message when the exception is caught
 // what() is a virtual function from std::exception that we override
@@ -81,4 +82,20 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return out;
+}
+
+// calls beSigned() - form decides if the grade is sufficient
+// catches the exception
+void Bureaucrat::signForm(Form &form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << *this << " signed " << form << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << *this << " couldn't sign " << form
+                  << " because " << e.what() << std::endl;
+    }
 }

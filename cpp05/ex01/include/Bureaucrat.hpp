@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 11:51:30 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/04/02 16:11:10 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/04/03 18:33:51 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <string>
 #include <exception>
+
+class Form;
 
 class Bureaucrat
 {
@@ -50,6 +52,7 @@ class Bureaucrat
 
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(Form &form);
 };
 
 //std::cout << a << b << c - channing 
