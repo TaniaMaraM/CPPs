@@ -6,11 +6,11 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 11:07:28 by tmarcos           #+#    #+#              #
-#    Updated: 2026/04/08 10:42:16 by tmarcos          ###   ########.fr        #
+#    Updated: 2026/04/08 10:55:11 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = form
+NAME = intern
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include
@@ -20,8 +20,12 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-	  Bureaucrat.cpp \
-	  Form.cpp \
+      Bureaucrat.cpp \
+      AForm.cpp \
+      ShrubberyCreationForm.cpp \
+      RobotomyRequestForm.cpp \
+      PresidentialPardonForm.cpp \
+	  intern.cpp \
 
 OBJ = $(SRC:%.cpp=obj/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 16:53:41 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/04/03 18:10:57 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/04/08 10:31:42 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Form
         const int          _gradeSign;
         const int          _gradeExecute;
         bool               _signed;
-
+    
     public:
         Form();
         Form(const std::string &name, int gradeSign, int gradeExecute);
