@@ -71,13 +71,33 @@ Advanced polymorphism with interfaces and pure virtual functions.
 
 ---
 
-### ⏳ CPP05 - C++ Repeats & Exceptions
-*Coming Soon* - Exception handling and repetition of advanced concepts.
+### ✅ CPP05 - Exceptions & Bureaucracy
+Exception handling combined with classes, inheritance, and polymorphism.
+
+**Concepts:**
+- `try`, `throw`, `catch` — C++ exception mechanism
+- Custom exception classes nested inside other classes (`std::exception` subclasses)
+- Constructors that throw instead of returning an error
+- Abstract base classes (`AForm`) with pure virtual functions
+- Polymorphic `execute()` per concrete form type
+- File I/O with `std::ofstream`
+- Factory pattern with a dispatch table (pointer-to-function array)
+- `protected` access for shared validation helpers
 
 ---
 
-### ⏳ CPP06 - C++ Casts
-*Coming Soon* - Understanding C++ casting operators.
+### ✅ CPP06 - C++ Casts
+Understanding and applying the four C++ casting operators correctly.
+
+**Concepts:**
+- `static_cast` — safe compile-time conversions between compatible types
+- `dynamic_cast` — safe runtime downcast for polymorphic types (returns `nullptr` on failure)
+- `reinterpret_cast` — low-level bit reinterpretation (e.g. pointer ↔ `uintptr_t`)
+- `const_cast` — adding/removing `const` qualifier
+- Scalar type detection and conversion (char, int, float, double, pseudo-literals `nan`/`inf`)
+- IEEE 754 special values: `nan`, `+inf`, `-inf` and their float variants
+- Pointer serialisation with `uintptr_t` and `reinterpret_cast`
+- Type identification without `typeid` using `dynamic_cast`
 
 ---
 
@@ -94,7 +114,7 @@ Advanced polymorphism with interfaces and pure virtual functions.
 ## 📁 Project Structure
 
 <pre>
-cpp_modules/
+Cpps/
 ├── <a href="./cpp00">cpp00</a>
 │   ├── <a href="./cpp00/ex00">ex00</a>
 │   └── <a href="./cpp00/ex01">ex01</a>
@@ -119,37 +139,17 @@ cpp_modules/
 │   ├── <a href="./cpp04/ex00">ex00</a>
 │   ├── <a href="./cpp04/ex01">ex01</a>
 │   └── <a href="./cpp04/ex02">ex02</a>
-├── cpp05 (coming soon)
-├── cpp06 (coming soon)
+├── <a href="./cpp05">cpp05</a>
+│   ├── <a href="./cpp05/ex00">ex00</a>
+│   ├── <a href="./cpp05/ex01">ex01</a>
+│   ├── <a href="./cpp05/ex02">ex02</a>
+│   └── <a href="./cpp05/ex03">ex03</a>
+├── <a href="./cpp06">cpp06</a>
+│   ├── <a href="./cpp06/ex00">ex00</a>
+│   ├── <a href="./cpp06/ex01">ex01</a>
+│   └── <a href="./cpp06/ex02">ex02</a>
 ├── cpp07 (coming soon)
 └── cpp08 (coming soon)
-</pre>00/ex00">ex00</a>/
-│   ├── <a href="./CPP00/ex01">ex01</a>/
-├── <a href="./CPP01">CPP01</a>
-│   ├── <a href="./CPP01/ex00">ex00</a>/
-│   ├── <a href="./CPP01/ex01">ex01</a>/
-│   ├── <a href="./CPP01/ex02">ex02</a>/
-│   ├── <a href="./CPP01/ex03">ex03</a>/
-│   ├── <a href="./CPP01/ex04">ex04</a>/
-│   └── <a href="./CPP01/ex05">ex05</a>/
-│   └── <a href="./CPP01/ex06">ex06</a>/
-├── <a href="./CPP02">CPP02</a>
-│   ├── <a href="./CPP02/ex00">ex00</a>/
-│   ├── <a href="./CPP02/ex01">ex01</a>/
-│   ├── <a href="./CPP02/ex02">ex02</a>/
-├── <a href="./CPP03">CPP03</a>
-│   ├── <a href="./CPP03/ex00">ex00</a>/
-│   ├── <a href="./CPP03/ex01">ex01</a>/
-│   ├── <a href="./CPP03/ex02">ex02</a>/
-│   ├── <a href="./CPP03/ex03">ex03</a>/
-├── <a href="./CPP04">CPP04</a>
-│   ├── <a href="./CPP04/ex00">ex00</a>/
-│   ├── <a href="./CPP04/ex01">ex01</a>/
-│   ├── <a href="./CPP04/ex02">ex02</a>/
-├── CPP05 (coming soon)
-├── CPP06 (coming soon)
-├── CPP07 (coming soon)
-└── CPP08 (coming soon)
 </pre>
 ---
 

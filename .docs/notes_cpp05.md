@@ -55,6 +55,49 @@ The subject exception
 "exception classes do not have to be in OCF"
 Your nested GradeTooHighException etc. — no need for copy ctor / assignment on those. Everything else must have all four.
 
+Tema do módulo
+O CPP05 introduz excepções em C++ (try, throw, catch) e junta isso a classes, herança e polimorfismo. O enredo é uma burocracia: Bureaucrats (níveis 1–150) e formulários que precisam de ser assinados e executados com nível suficiente — senão, lança-se uma excepção.
+
+Ex00 — Bureaucrat
+Classe base: nome + grade (1 = melhor, 150 = pior).
+Validação no construtor: grade fora de [1,150] → throw GradeTooHighException() ou GradeTooLowException() (classes aninhadas que herdam de std::exception).
+Incrementar / decrementar grade com os mesmos limites (cuidado: “subir” no cargo = diminuir o número do grade).
+operator<< para imprimir o burocrata com std::cout.
+No main, o código típico envolve testes em try { ... } catch (std::exception &e) { ... }.
+Ideia central: erros não são “retornos” do construtor; usam-se excepções.
+
+Ex01 — Form
+Um formulário tem nome, se está assinado, e grades mínimos para assinar e para executar (conforme o subject).
+beSigned(Bureaucrat): se o burocrata for demasiado “baixo” (número do grade maior que o exigido), lança excepção; caso contrário marca como assinado.
+Ideia central: regras de negócio dentro da classe; encapsulamento + excepções.
+
+Ex02 — AForm + três formulários concretos
+Form passa a AForm (classe abstracta): por exemplo virtual void execute(...) const = 0;.
+Não se instancia AForm directamente; existem ShrubberyCreationForm, RobotomyRequestForm, PresidentialPardonForm, cada um com o seu execute.
+Habitualmente há um checkExecution (assinado? executor com grade suficiente?) antes da acção real.
+Shrubbery: escreve ficheiro com árvores ASCII. Robotomy: aleatoriedade (ex.: rand()). Presidential: mensagem de perdão.
+Ideia central: ligação ao CPP04 ex02 (abstract class + override) + excepções.
+
+Ex03 — Intern (factory)
+O Intern não “é” um formulário; fabrica formulários a partir de um nome de string (ex.: "shrubbery creation").
+Padrão típico: tabela nome → função que cria AForm* (typedef de ponteiro para função, struct com name + creator, etc.).
+Polimorfismo: devolves AForm* mas o objecto real é Shrubbery, Robotomy ou Presidential.
+Ideia central: factory simples + o mesmo polimorfismo de AForm*.
+
+Mapa mental rápido
+Exercício	Foco principal
+00
+Excepções + Bureaucrat + grade
+01
+Form + assinatura + validação
+02
+AForm abstracto + execute em cada tipo + ficheiro / aleatoriedade
+03
+Intern + criar o form certo pelo nome
+Frase para a eval (inglês)
+"CPP05 is about C++ exceptions — try, throw, catch — combined with classes. We have bureaucrats with grades and forms that must be signed and executed at the right grade, or we throw. In ex02 we use an abstract base form with concrete execute implementations. In ex03 we add an intern that builds the right form type from a string — a simple factory pattern."
+
+Se quiseres, no próximo passo podemos focar só ex03 (o teu intern.cpp) linha a linha.
 
 
 
