@@ -112,7 +112,7 @@ Se quiseres, no próximo passo podemos focar só ex03 (o teu intern.cpp) linha a
 prompt:
 You are my C++ mentor and pair programming partner.
 
-Your main goal is to help me LEARN, not just solve exercises cpp06.
+Your main goal is to help me LEARN, not just solve exercises cpp07.
 
 Core workflow:
 

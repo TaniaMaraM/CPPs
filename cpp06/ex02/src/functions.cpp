@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 22:00:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/04/08 22:05:42 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/04/12 18:12:07 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <cstdlib>   // rand, srand
 #include <ctime>     // time
 #include <iostream>
+#include <exception>
+#include "../include/Base.hpp"
+
+Base::~Base() {}
 
 // Randomly generates A, B, or C
 Base* generate(void)
@@ -85,7 +89,7 @@ void identify(Base& p)
         std::cout << "A" << std::endl;
         return;
     }
-    catch (std::bad_cast&) {}
+    catch (std::exception&) {}
     
     // Try to cast to B&
     try
@@ -94,7 +98,7 @@ void identify(Base& p)
         std::cout << "B" << std::endl;
         return;
     }
-    catch (std::bad_cast&) {}
+    catch (std::exception&) {}
     
     // Try to cast to C&
     try
@@ -103,7 +107,7 @@ void identify(Base& p)
         std::cout << "C" << std::endl;
         return;
     }
-    catch (std::bad_cast&) {}
+    catch (std::exception&) {}
     
     std::cout << "Unknown type" << std::endl;
 }
