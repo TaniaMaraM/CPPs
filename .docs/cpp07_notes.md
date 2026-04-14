@@ -1,5 +1,16 @@
 The Problem They Solve
 Templates resolvem principalmente repetição de código.
+Templates não são funções normais prontas.
+Eles são mais como uma receita que o compilador usa para fabricar código real.
+template = molde
+instantiation = versão concreta criada pelo compilador
+Template = molde genérico de código.
+T = tipo que será preenchido depois.
+Instanciação = compilador gera a versão real.
+Fica no header = porque o compilador precisa ver a implementação completa.
+Vantagem = reuso + performance + menos repetição.
+Pegadinha = erros feios e longos.
+
 In C, if you want a swap for different types, you write multiple functions:
 
 void swap_int(int *a, int *b)   { ... }
@@ -158,3 +169,20 @@ Em termos simples
 iter é um "for each" genérico. Em vez de tu escreveres o loop sempre que queres fazer algo num array, delegas isso ao iter e só dizes o que fazer (a função).
 
 É o mesmo conceito que std::for_each da STL — mas como estamos no módulo 07 e a STL ainda é proibida, implementas tu próprio.
+
+💬 “O que é um template?”
+
+👉 “It is a way to write generic code where the type is defined later at compile time.”
+
+💬 “Por que templates ficam no header?”
+
+👉 “Because the compiler needs the full implementation to generate the code.”
+
+💬 “Qual a diferença para virtual?”
+
+👉 template = compile time
+👉 virtual = runtime
+
+💬 “O que acontece por trás?”
+
+👉 “The compiler generates a concrete version for each type used.”
