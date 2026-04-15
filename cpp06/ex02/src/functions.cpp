@@ -6,7 +6,7 @@
 /*   By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 22:00:00 by tmarcos           #+#    #+#             */
-/*   Updated: 2026/04/12 18:12:07 by tmarcos          ###   ########.fr       */
+/*   Updated: 2026/04/15 15:27:53 by tmarcos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ Base* generate(void)
         std::srand(std::time(NULL));
         seeded = true;
     }
-    
+
     // Random number 0, 1, or 2
     int random = std::rand() % 3;
-    
+
     switch (random)
     {
         case 0:
@@ -61,21 +61,21 @@ void identify(Base* p)
         std::cout << "A" << std::endl;
         return;
     }
-    
+
     // Try to cast to B*
     if (dynamic_cast<B*>(p))
     {
         std::cout << "B" << std::endl;
         return;
     }
-    
+
     // Try to cast to C*
     if (dynamic_cast<C*>(p))
     {
         std::cout << "C" << std::endl;
         return;
     }
-    
+
     std::cout << "Unknown type" << std::endl;
 }
 
@@ -90,7 +90,7 @@ void identify(Base& p)
         return;
     }
     catch (std::exception&) {}
-    
+
     // Try to cast to B&
     try
     {
@@ -99,7 +99,7 @@ void identify(Base& p)
         return;
     }
     catch (std::exception&) {}
-    
+
     // Try to cast to C&
     try
     {
@@ -108,6 +108,6 @@ void identify(Base& p)
         return;
     }
     catch (std::exception&) {}
-    
+
     std::cout << "Unknown type" << std::endl;
 }

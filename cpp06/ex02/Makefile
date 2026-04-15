@@ -6,7 +6,7 @@
 #    By: tmarcos <tmarcos@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/02 11:07:28 by tmarcos           #+#    #+#              #
-#    Updated: 2026/04/08 21:51:31 by tmarcos          ###   ########.fr        #
+#    Updated: 2026/04/15 15:28:00 by tmarcos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = main.cpp \
-      Base.cpp \
       functions.cpp
 
 OBJ = $(SRC:%.cpp=obj/%.o)
